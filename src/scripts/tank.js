@@ -1,13 +1,20 @@
+// const MoveObject = require('./moveObject');
+import MoveObject from './moveObject.js';
 
-class Tank {
-    constructor(ctx) {
-        this.ctx = ctx;
+export default class Tank extends MoveObject {
+    constructor(pos) {
+        super({pos: pos, vel: 2, color: 'red'});
     }
 
-    drawTank(x_pos, y_pos) {
-        this.ctx.fillStyle = 'red';
-        this.ctx.fillRect(x_pos, y_pos, 50, -50);
+    animate(ctx, k) {
+        this.move(k);
+        this.drawTank(ctx)
+    }
+
+    drawTank(ctx) {
+        ctx.fillStyle = 'red';
+        ctx.fillRect(this.pos[0], this.pos[1], 50, -50);
     }
 }
 
-module.exports = Tank;
+// module.exports = Tank;

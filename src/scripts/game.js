@@ -1,19 +1,35 @@
-const Platform = require('./platform');
-const Tank = require('./tank');
+import Platform from './platform.js'
+// const Platform = require('./platform');
+// const Tank = require('./tank');
+import Tank from "./tank"
 
-CONSTANTS = {
+const CONSTANTS = {
     DIM_X : 1000,
     DIM_Y : 600,
     COLOR : 'lightblue'
 }
-
-class Game {
+export default class Game {
 
     constructor (ctx) {
-        this.background(ctx);
-        this.ground = new Platform(ctx, {width: CONSTANTS.DIM_X, height: CONSTANTS.DIM_Y});
-        this.tank = new Tank(ctx);
-        this.tank.drawTank(this.ground.width/2, this.ground.height);
+        // console.log(ctx);
+        this.ctx = ctx;
+        this.start();
+    }
+    
+    start() {
+        this.background(this.ctx);
+        this.ground = new Platform({width: CONSTANTS.DIM_X, height: CONSTANTS.DIM_Y});
+        this.ground.creatPlatorm(this.ctx);
+
+        const pos = [this.ground.width/2, this.ground.height - this.ground.height / 5];
+        this.tank = new Tank(pos);
+        this.tank.drawTank(this.ctx);
+    }
+
+    animate(k) {
+        this.background(this.ctx)
+        this.ground.creatPlatorm(this.ctx)
+        this.tank.animate(this.ctx, k)
     }
 
     background(ctx) {
@@ -23,4 +39,4 @@ class Game {
 
 }
 
-module.exports = Game;
+// module.exports = Game;
