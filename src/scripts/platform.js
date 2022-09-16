@@ -10,9 +10,8 @@ export default class PlatForm {
         // this.creatPlatorm(dimension.width, dimension.height);
     }
     
-    creatPlatorm(ctx) {
-        console.log(ctx);
-        ctx.fillStyle = DEFAULTS.groundColor;
+    creatPlatorm(ctx, color) {
+        ctx.fillStyle = color;
         ctx.fillRect(0, this.height, this.width, -this.height/5);
     }
 

@@ -1,10 +1,12 @@
 // const Tank = require('./scripts/tank');
 import Game from './scripts/game'
+const CONSTANTS = require('./scripts/constants');
+
 
 document.addEventListener("DOMContentLoaded", () => {
     let canvasEl = document.getElementById('game-canvas');
-    canvasEl.width = "1000";
-    canvasEl.height = "600";
+    canvasEl.width = CONSTANTS.DIM_X;
+    canvasEl.height = CONSTANTS.DIM_Y;
     canvasEl = canvasEl.getContext('2d');
     
     const gameBase = new Game(canvasEl);
@@ -18,9 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
             k = 'a';
         }
         gameBase.animate.bind(gameBase)(k);
-        // gameBase.background(canvasEl);
-        // gameBase.ground.creatPlatorm(canvasEl, {width: 1000, height: 600})
-        // gameBase.tank.drawTank(canvasEl);
     })
     
 })
