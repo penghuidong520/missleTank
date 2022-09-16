@@ -13,12 +13,27 @@ document.addEventListener("DOMContentLoaded", () => {
     // console.log(gameBase.tank.move);
     document.addEventListener('keydown', (e) => {
         let k = '';
-        if (e.key === 'd') {
-            k = 'd';
+
+        switch(e.key) {
+            case 'a':
+                k = 'a';
+                break;
+            case 'd':
+                k = 'd';
+                break;
+            case 'Space':
+                console.log('space');
+                break;
         }
-        if (e.key === 'a') {
-            k = 'a';
-        }
+
+        // if (e.key === 'd') {
+        //     k = 'd';
+        // }
+        // if (e.key === 'a') {
+        //     k = 'a';
+        // }
+
+
         gameBase.animate.bind(gameBase)(k);
     })
     
