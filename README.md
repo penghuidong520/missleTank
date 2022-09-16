@@ -7,7 +7,7 @@
 - Don't know what libraries or APIs I'm going to use. I will update this README when I encounter situations where I'm going to need APIs/Libraries etc.
 
 ## WireFrames
-    ![](./images/wireframe.png)
+![](./images/wireframe.png)
 
 ## Functionalities:
 - In MiisyleTank, users will be able to:
