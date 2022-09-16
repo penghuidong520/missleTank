@@ -17,12 +17,13 @@ export default class Game {
         this.tank = new Tank(pos);
         this.tank.drawTank(this.ctx);
         this.tank.drawForceBar(this.ctx);
+        this.tank.drawForceBar(this.ctx, 1);
     }
 
-    animate(k) {
+    animate(keydown, force) {
         this.background(this.ctx)
         this.ground.creatPlatorm(this.ctx, CONSTANTS.PLATFORM_COLOR)
-        this.tank.animate(this.ctx, k)
+        this.tank.animate(this.ctx, keydown, force)
     }
 
     background(ctx) {

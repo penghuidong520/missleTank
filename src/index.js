@@ -11,30 +11,28 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const gameBase = new Game(canvasEl);
     // console.log(gameBase.tank.move);
+    let force = 1;
     document.addEventListener('keydown', (e) => {
         let k = '';
-
         switch(e.key) {
             case 'a':
                 k = 'a';
                 break;
             case 'd':
                 k = 'd';
+                // console.log('d');
                 break;
-            case 'Space':
-                console.log('space');
+            case ' ':
+                force += 1;
+                console.log(force)
+                gameBase.animate.bind(gameBase)(k, force);
                 break;
         }
+        gameBase.animate.bind(gameBase)(k, force);
 
-        // if (e.key === 'd') {
-        //     k = 'd';
-        // }
-        // if (e.key === 'a') {
-        //     k = 'a';
-        // }
+        //On key up, release space
+        document.addEventListener('keyup', (e) => force = 1);
 
-
-        gameBase.animate.bind(gameBase)(k);
     })
     
 })

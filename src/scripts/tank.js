@@ -7,9 +7,9 @@ export default class Tank extends MoveObject {
         super({pos: pos, vel: CONSTANTS.SPEED, color: CONSTANTS.TANK_COLOR});
     }
 
-    animate(ctx, k) {
-        this.drawForceBar(ctx);
-        this.move(k);
+    animate(ctx, keydown, force) {
+        this.drawForceBar(ctx, force);
+        this.move(keydown);
         this.drawTank(ctx)
     }
 
@@ -19,13 +19,13 @@ export default class Tank extends MoveObject {
         ctx.fillRect(this.pos[0], this.pos[1], size, -size);
     }
 
-    drawForceBar(ctx) {
+    drawForceBar(ctx, force) {
         ctx.fillStyle = CONSTANTS.EMPTY_FORCE;
         const length = CONSTANTS.DIM_X - (CONSTANTS.DIM_X / 10) * 2;
         ctx.fillRect(CONSTANTS.DIM_X / 10, CONSTANTS.DIM_Y / 10, length, CONSTANTS.FORCE_BAR_HEIGHT);
 
         // charges the forceBar when space is pressed
-        this.charge(ctx, 1);
+        this.charge(ctx, force);
         
     }
     
