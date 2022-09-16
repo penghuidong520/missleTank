@@ -20,6 +20,7 @@ Functionalities:
         * A production README
     
 Implementation Timeline
+
     Friday/Weekend: Set up the basic canvas and create class for tank and game class as well as the background platform that tanks are going to be move on
 
     Monday: Add movements to tanks and restrictions on how far a tank can move and time, and create missle class
