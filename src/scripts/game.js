@@ -2,23 +2,29 @@ import Missle from './missles';
 import Platform from './platform'
 import Tank from "./tank"
 import Background from "./background"
+import ForceBar from './forceBar';
 const CONSTANTS = require('./constants');
 
 export default class Game {
     constructor (ctx) {
         this.ctx = ctx;
-        
+        this.direction = 'left'
         this.start();
     }
     
     start() {
+        // Background
         this.background = new Background();
+        // Platform
         this.platform = new Platform({width: CONSTANTS.DIM_X, height: CONSTANTS.DIM_Y});
         const pos = [this.platform.width / 10, this.platform.height - this.platform.height / 5];
-        // this.missle = new Missle(pos);
+        // ForceBar
+        this.forceBar = new ForceBar();
+        // Tanks
         this.tank = new Tank(pos, 'red');
         this.tank2 = new Tank([CONSTANTS.DIM_X-pos[0], pos[1]], 'blue');
         this.currentTank = this.tank2;
+        document.addEventListener("keydown", this.keyDown.bind(this));
         document.addEventListener("keyup", this.keyUp.bind(this));
         setInterval(this.animate.bind(this), 1000/60);
     }
@@ -26,6 +32,7 @@ export default class Game {
     animate() {
         this.background.animate(this.ctx);
         this.platform.animate(this.ctx);
+        this.forceBar.animate(this.ctx);
         this.tank.animate(this.ctx, this.currentTank);
         this.tank2.animate(this.ctx, this.currentTank);
         if (this.shoot) this.fire();
@@ -33,17 +40,16 @@ export default class Game {
 
     fire() {
         if (this.shoot) {
-            // console.log(this.missle.drawMissle);
-            this.missle.drawMissle(this.ctx);
+            this.missle.drawMissle(this.ctx, this.direction);
+            // this.switchTurn();
         }
         if (this.missleCollision()) {
-            this.shoot = false;
             this.switchTurn();
+            this.shoot = false;
         }
     }
 
     missleCollision() {
-        console.log(this.missle.pos[1]);
         if ((this.missle.pos[0] > CONSTANTS.DIM_X ||
             this.missle.pos[0] < 0) || (this.missle.pos[1] > CONSTANTS.DIM_Y || this.missle.pos[1] < 0) ) {
                 return true;
@@ -62,11 +68,21 @@ export default class Game {
         }
     }
 
+    keyDown(e) {
+        switch (e.key) {
+            case 'a':
+                this.direction = 'left';
+                break;
+            case 'd':
+                this.direction = 'right';
+                break;
+        }
+    }
+
     keyUp(e) {
         if (e.key === ' ') {
             this.shoot = true;
-            // console.log(this.currentTank);
-            this.missle = new Missle(this.currentTank.pos);
+            this.missle = new Missle(this.currentTank.pos, this.forceBar.force);
         }
     }
 

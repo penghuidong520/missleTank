@@ -9,7 +9,7 @@ export default class Tank {
         this.pos = pos;
         this.vel = CONSTANTS.TANK_SPEED;
         this.color = color
-        this.force = 1;
+        // this.force = 1;
 
         this.width = CONSTANTS.TANK_SIZE
         this.height = CONSTANTS.TANK_SIZE
@@ -23,8 +23,8 @@ export default class Tank {
 
     animate(ctx, currentTank) {
         // console.log(currentTank === this);
-        this.drawForceBar(ctx);
-        this.charge(ctx);
+        // this.drawForceBar(ctx);
+        // this.charge(ctx);
         this.drawTank(ctx, currentTank);
 
         // if (this.shoot) this.missle.drawMissle(ctx);
@@ -66,7 +66,7 @@ export default class Tank {
             ctx.fillRect(CONSTANTS.DIM_X / 10, CONSTANTS.DIM_Y / 10, max, CONSTANTS.FORCE_BAR_HEIGHT);
         }
     }
-    
+
     // source: https://github.com/CodingWith-Adam/shooting-bullets-game-dev/blob/main/Player.js
     // taking this as reference to put my moves
     keyDown = (e) => {
@@ -77,10 +77,10 @@ export default class Tank {
             case 'd':
                 this.right = true;
                 break;
-            case ' ':
-                // this.force += 1;
-                this.charging = true;
-                break;
+            // case ' ':
+            //     // this.force += 1;
+            //     this.charging = true;
+            //     break;
         }
     }
 
@@ -93,12 +93,12 @@ export default class Tank {
             case 'd':
                 this.right = false;
                 break;
-            case ' ':
-                this.charging = false;
-                this.force = 1;
-                // this.shoot = true;
-                // this.missle = new Missle(this.pos);
-                break;
+            // case ' ':
+            //     this.charging = false;
+            //     this.force = 1;
+            //     // this.shoot = true;
+            //     // this.missle = new Missle(this.pos);
+            //     break;
         }
     }
 
