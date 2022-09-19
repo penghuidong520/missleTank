@@ -1,19 +1,24 @@
-const DEFAULTS = {
-    groundColor : 'lightgreen'
-}
+const CONSTANTS = require('./constants')
 
 export default class PlatForm {
     constructor(dimension) {
         this.width = dimension.width;
         // this.height : surface of the platform
         this.height = dimension.height;
+        this.pos = [0, this.height];
         // this.creatPlatorm(dimension.width, dimension.height);
     }
     
-    creatPlatorm(ctx, color) {
-        ctx.fillStyle = color;
-        ctx.fillRect(0, this.height, this.width, -this.height/5);
+    animate(ctx) {
+        this.creatPlatorm(ctx);
     }
+
+    creatPlatorm(ctx) {
+        ctx.fillStyle = CONSTANTS.PLATFORM_COLOR;
+        ctx.fillRect(this.pos[0], this.pos[1], this.width, -this.height/5);
+    }
+
+
 
 }
 
