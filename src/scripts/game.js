@@ -26,25 +26,30 @@ export default class Game {
         this.currentTank = this.tank2;
         document.addEventListener("keydown", this.keyDown.bind(this));
         document.addEventListener("keyup", this.keyUp.bind(this));
+
         setInterval(this.animate.bind(this), 1000/60);
     }
 
     animate() {
-        this.background.animate(this.ctx);
-        this.platform.animate(this.ctx);
-        this.forceBar.animate(this.ctx);
-        this.tank.animate(this.ctx, this.currentTank);
-        this.tank2.animate(this.ctx, this.currentTank);
+        if (!this.shotsFired) {
+            this.background.animate(this.ctx);
+            this.platform.animate(this.ctx);
+            this.forceBar.animate(this.ctx);
+            this.tank.animate(this.ctx, this.currentTank);
+            this.tank2.animate(this.ctx, this.currentTank);
+        }
         if (this.shoot) this.fire();
     }
 
     fire() {
+        this.shotsFired = true;
         if (this.shoot) {
             this.missle.drawMissle(this.ctx, this.direction);
             // this.switchTurn();
         }
         if (this.missleCollision()) {
             this.switchTurn();
+            this.shotsFired = false;
             this.shoot = false;
         }
     }
@@ -69,13 +74,15 @@ export default class Game {
     }
 
     keyDown(e) {
-        switch (e.key) {
-            case 'a':
-                this.direction = 'left';
-                break;
-            case 'd':
-                this.direction = 'right';
-                break;
+        if (!this.shotsFired) {
+            switch (e.key) {
+                case 'a':
+                    this.direction = 'left';
+                    break;
+                case 'd':
+                    this.direction = 'right';
+                    break;
+            }
         }
     }
 

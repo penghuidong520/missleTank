@@ -77,27 +77,31 @@ export default class Tank {
             case 'd':
                 this.right = true;
                 break;
-            // case ' ':
-            //     // this.force += 1;
-            //     this.charging = true;
+            // case 'ArrowLeft':
+            //     this.left = true;
             //     break;
+            // case 'ArrowRight':
+            //     this.right = true;
+            //     break;
+            case ' ':
+                this.charging = true;
+                break;
         }
     }
 
     keyUp = (e) => {
-        if (e.key === 'a') {
-            this.left = false;
-        }
-
         switch (e.key) {
+            case 'a':
+                this.left = false;
+                break;
             case 'd':
                 this.right = false;
                 break;
-            // case ' ':
-            //     this.charging = false;
-            //     this.force = 1;
-            //     // this.shoot = true;
-            //     // this.missle = new Missle(this.pos);
+            // case 'ArrowLeft':
+            //     this.left = false;
+            //     break;
+            // case 'ArrowRight':
+            //     this.right = false;
             //     break;
         }
     }
