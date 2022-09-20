@@ -4,11 +4,12 @@ module.exports = CONSTANTS = {
     BACKGROUND_COLOR : 'lightblue',
     PLATFORM_COLOR : 'lightgreen',
     //tank movement speed
-    TANK_SPEED : 5,
+    TANK_SPEED : 3,
     TANK_COLOR : 'violet',
     TANK_SIZE : 30,
     //ForceBar
     FORCE_BAR_HEIGHT : 50,
+    MAX_FORCE : 85,
     EMPTY_FORCE : 'gray',
     FORCE_COLOR : 'red',
     //Missle
@@ -16,5 +17,10 @@ module.exports = CONSTANTS = {
     MISSILE_SIZE : 5,
     MISSILE_SPEED : 5,
     // Gravity for Missle
-    GRAVITY : 0.1
+    GRAVITY : 0.1,
+    // Health Bar 
+    HEALTH_BAR_COLOR : 'gray',
+    HEALTH : 'orange',
+    HEALTH_HEIGHT : 5,
+    MAX_HEALTH : 3
 }

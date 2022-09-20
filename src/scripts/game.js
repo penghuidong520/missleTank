@@ -9,7 +9,7 @@ export default class Game {
     constructor (ctx) {
         this.ctx = ctx;
         this.direction = 'left'
-        this.start();
+        // this.start();
     }
     
     start() {
@@ -24,13 +24,21 @@ export default class Game {
         this.tank = new Tank(pos, 'red');
         this.tank2 = new Tank([CONSTANTS.DIM_X-pos[0], pos[1]], 'blue');
         this.currentTank = this.tank2;
+        // GameOver ?
+        this.gameOver = false;  
+
         document.addEventListener("keydown", this.keyDown.bind(this));
         document.addEventListener("keyup", this.keyUp.bind(this));
-
-        setInterval(this.animate.bind(this), 1000/60);
+        // this.animate()
+        // setInterval(this.animate.bind(this), 1000/60);
     }
 
     animate() {
+        if (this.tank.health <= 0 || this.tank2.health <= 0) {
+            this.winner = this.currentTank;
+            this.gameOver = true;
+        }
+
         if (!this.shotsFired) {
             this.background.animate(this.ctx);
             this.platform.animate(this.ctx);
@@ -60,8 +68,14 @@ export default class Game {
                 return true;
             }
         // if (this.missle.collision(this.platform)) return true;
-        if (this.missle.collision(this.tank)) return true;
-        if (this.missle.collision(this.tank2)) return true;
+        if (this.missle.collision(this.tank)) {
+            this.tank.health -= 1;
+            return true;
+        } 
+        if (this.missle.collision(this.tank2)) {
+            this.tank2.health -= 1;
+            return true;
+        }
         return false
     }
 
@@ -71,6 +85,11 @@ export default class Game {
         } else if (this.currentTank === this.tank2) {
             this.currentTank = this.tank;
         }
+    }
+
+    displayWinner() {
+        this.ctx.fillStyle = 'black';
+        this.ctx.fillText(`Winner is ${this.currentTank.color}`, 300, 300, 100);
     }
 
     keyDown(e) {

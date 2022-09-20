@@ -15,7 +15,6 @@ export default class Missle{
 
     drawMissle(ctx, direction) {
         ctx.fillStyle = CONSTANTS.MISSILE_COLOR;
-
         if (direction === 'left') {
             this.pos[0] -= this.speed;
         } else {
@@ -30,12 +29,11 @@ export default class Missle{
     } 
 
     collision(obj) {
-        // console.log(obj);
-        // console.log(this.pos[1], obj.pos[1])
         if (
             (this.pos[0] > obj.pos[0] &&
             this.pos[0] < obj.pos[0] + obj.width) && 
-            (this.pos[1] < obj.pos[1] && this.pos[1] > obj.pos[1] - obj.height)
+            (this.pos[1] < obj.pos[1] &&
+            this.pos[1] > obj.pos[1] - obj.height)
             ) 
         {
             console.log('hit In Missle Collision function')

@@ -1,3 +1,4 @@
+// const CONSTANTS = require('./constants');
 
 export default class ForceBar {
     constructor() {
@@ -31,6 +32,9 @@ export default class ForceBar {
     }
     keyDown(e) {
         if (e.key === ' ') {
+            if (this.force >= CONSTANTS.MAX_FORCE) {
+                this.force = CONSTANTS.MAX_FORCE;
+            }
             this.charging = true
         }
     }
