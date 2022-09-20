@@ -9,10 +9,15 @@ document.addEventListener("DOMContentLoaded", () => {
     canvasEl.height = CONSTANTS.DIM_Y;
     canvasEl = canvasEl.getContext('2d');
 
-    const gv = new GameView(canvasEl);
-    gv.gamePlay();
-    // const game = new Game(canvasEl);
-    // game.start();
-    // if (gv.gameover) 
     
+    const start = document.getElementsByClassName('play-game');
+    let gv = new GameView(canvasEl)
+    start[0].addEventListener("click", ()=>{
+        gv = new GameView(canvasEl);
+        gv.gamePlay();
+    })
+    start[1].addEventListener("click", ()=>{
+        gv = new GameView(canvasEl);
+        gv.gamePlay();
+    })
 })

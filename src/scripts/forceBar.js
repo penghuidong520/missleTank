@@ -20,7 +20,11 @@ export default class ForceBar {
     }
 
     chargeBar(ctx) {
-        if (this.charging) this.force += 1;
+        if (this.force >= CONSTANTS.MAX_FORCE) {
+            this.force = CONSTANTS.MAX_FORCE;
+        } else {
+            if (this.charging) this.force += 1;
+        }
         ctx.fillStyle = CONSTANTS.FORCE_COLOR;
         const force = CONSTANTS.DIM_X / 100;
         const max = CONSTANTS.DIM_X - (CONSTANTS.DIM_X / 10) * 2;
@@ -32,9 +36,7 @@ export default class ForceBar {
     }
     keyDown(e) {
         if (e.key === ' ') {
-            if (this.force >= CONSTANTS.MAX_FORCE) {
-                this.force = CONSTANTS.MAX_FORCE;
-            }
+            
             this.charging = true
         }
     }

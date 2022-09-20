@@ -9,7 +9,7 @@ export default class Game {
     constructor (ctx) {
         this.ctx = ctx;
         this.direction = 'left'
-        // this.start();
+        this.start();
     }
     
     start() {
@@ -34,15 +34,20 @@ export default class Game {
     }
 
     animate() {
-        if (this.tank.health <= 0 || this.tank2.health <= 0) {
-            this.winner = this.currentTank;
+        if (this.tank.health <= 0) {
             this.gameOver = true;
+            this.winner = this.tank2;
+        } else if (this.tank2.health <= 0) {
+            this.gameOver = true;
+            this.winner = this.tank;
         }
 
+        
         if (!this.shotsFired) {
             this.background.animate(this.ctx);
             this.platform.animate(this.ctx);
             this.forceBar.animate(this.ctx);
+            this.currentMark();
             this.tank.animate(this.ctx, this.currentTank);
             this.tank2.animate(this.ctx, this.currentTank);
         }
@@ -87,9 +92,21 @@ export default class Game {
         }
     }
 
-    displayWinner() {
-        this.ctx.fillStyle = 'black';
-        this.ctx.fillText(`Winner is ${this.currentTank.color}`, 300, 300, 100);
+    currentMark() {
+        this.ctx.beginPath();
+        this.ctx.moveTo(this.currentTank.pos[0] + 10, this.currentTank.pos[1] - 55);
+        this.ctx.lineTo(this.currentTank.pos[0] + 20, this.currentTank.pos[1] - 55);
+        this.ctx.lineTo(this.currentTank.pos[0] + 15, this.currentTank.pos[1] - 50);
+        this.ctx.closePath();
+
+        // the outline
+        this.ctx.lineWidth = 10;
+        this.ctx.strokeStyle = '#666666';
+        this.ctx.stroke();
+
+        // the fill color
+        this.ctx.fillStyle = "#FFCC00";
+        this.ctx.fill();
     }
 
     keyDown(e) {
@@ -99,6 +116,12 @@ export default class Game {
                     this.direction = 'left';
                     break;
                 case 'd':
+                    this.direction = 'right';
+                    break;
+                case 'ArrowLeft':
+                    this.direction = 'left';
+                    break;
+                case 'ArrowRight':
                     this.direction = 'right';
                     break;
             }

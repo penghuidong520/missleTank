@@ -65,9 +65,15 @@ export default class Tank {
             case 'd':
                 this.right = true;
                 break;
-            case ' ':
-                this.charging = true;
+            case 'ArrowLeft':
+                this.left = true;
                 break;
+            case 'ArrowRight':
+                this.right = true;
+                break;
+            // case ' ':
+            //     this.charging = true;
+            //     break;
         }
     }
 
@@ -77,6 +83,12 @@ export default class Tank {
                 this.left = false;
                 break;
             case 'd':
+                this.right = false;
+                break;
+            case 'ArrowLeft':
+                this.left = false;
+                break;
+            case 'ArrowRight':
                 this.right = false;
                 break;
         }

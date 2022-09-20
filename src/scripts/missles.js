@@ -36,7 +36,6 @@ export default class Missle{
             this.pos[1] > obj.pos[1] - obj.height)
             ) 
         {
-            console.log('hit In Missle Collision function')
             return true;
         }
             return false;

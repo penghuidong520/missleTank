@@ -9,7 +9,7 @@ module.exports = CONSTANTS = {
     TANK_SIZE : 30,
     //ForceBar
     FORCE_BAR_HEIGHT : 50,
-    MAX_FORCE : 85,
+    MAX_FORCE : 90,
     EMPTY_FORCE : 'gray',
     FORCE_COLOR : 'red',
     //Missle
