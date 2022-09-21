@@ -11,6 +11,7 @@ export default class Missle{
         this.speed = CONSTANTS.MISSILE_SPEED;
         this.drop = 0;
         this.force = force;
+        this.canvas = document.getElementById('game-canvas');
     }
 
     drawMissle(ctx, direction, wind) {
@@ -37,8 +38,12 @@ export default class Missle{
             this.pos[1] > obj.pos[1] - obj.height)
             ) 
         {
-            // missle hit animation here
-            this.hitAnimation(ctx);
+            // missle hit animation here 
+            // Cite Daniel and Peter
+            this.canvas.classList.add('shake');
+            setTimeout(() => {
+                this.canvas.classList.remove('shake');
+            }, 500);
             //
             return true;
         }
@@ -47,10 +52,6 @@ export default class Missle{
 
     fire() {
         this.pos[1] -= this.force;
-    }
-
-    hitAnimation(ctx) {
-
     }
 
 }
