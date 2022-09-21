@@ -13,13 +13,14 @@ export default class Missle{
         this.force = force;
     }
 
-    drawMissle(ctx, direction) {
+    drawMissle(ctx, direction, wind) {
         ctx.fillStyle = CONSTANTS.MISSILE_COLOR;
         if (direction === 'left') {
             this.pos[0] -= this.speed;
         } else {
             this.pos[0] += this.speed;
         }
+        this.pos[0] += wind;
 
         // add gravity to have the bullet be projecting
         this.drop += CONSTANTS.GRAVITY;

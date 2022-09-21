@@ -9,6 +9,8 @@ export default class Game {
     constructor (ctx) {
         this.ctx = ctx;
         this.direction = 'left'
+        this.wind = 0;
+        this.shotsFired = false;
         this.start();
     }
     
@@ -47,6 +49,7 @@ export default class Game {
             this.background.animate(this.ctx);
             this.platform.animate(this.ctx);
             this.forceBar.animate(this.ctx);
+            this.printWind();
             this.currentMark();
             this.tank.animate(this.ctx, this.currentTank);
             this.tank2.animate(this.ctx, this.currentTank);
@@ -54,10 +57,17 @@ export default class Game {
         if (this.shoot) this.fire();
     }
 
+    printWind() {
+        this.ctx.fillStyle = 'black';
+        this.ctx.font = '20px serif';
+        this.ctx.textAlign = 'center';
+        this.ctx.fillText(`${this.wind}`, CONSTANTS.DIM_X / 2, CONSTANTS.DIM_Y / 4, 200);
+    }
+
     fire() {
         this.shotsFired = true;
         if (this.shoot) {
-            this.missle.drawMissle(this.ctx, this.direction);
+            this.missle.drawMissle(this.ctx, this.direction, this.wind);
             // this.switchTurn();
         }
         if (this.missleCollision()) {
@@ -85,10 +95,20 @@ export default class Game {
     }
 
     switchTurn() {
+        // change wind force
+        this.windForce();        
         if (this.currentTank === this.tank) {
             this.currentTank = this.tank2;
         } else if (this.currentTank === this.tank2) {
             this.currentTank = this.tank;
+        }
+    }
+
+    windForce() {
+        if (Math.random(1) < 0.5) {
+            this.wind = -(Math.floor(Math.random() * CONSTANTS.WIND_RANGE * 100)) / 100;
+        } else {
+            this.wind = (Math.floor(Math.random() * CONSTANTS.WIND_RANGE * 100)) / 100;
         }
     }
 
@@ -129,7 +149,7 @@ export default class Game {
     }
 
     keyUp(e) {
-        if (e.key === ' ') {
+        if (e.key === ' ' && this.shotsFired === false) {
             this.shoot = true;
             this.missle = new Missle(this.currentTank.pos, this.forceBar.force);
         }

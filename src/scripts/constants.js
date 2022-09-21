@@ -22,5 +22,7 @@ module.exports = CONSTANTS = {
     HEALTH_BAR_COLOR : 'gray',
     HEALTH : 'orange',
     HEALTH_HEIGHT : 5,
-    MAX_HEALTH : 3
+    MAX_HEALTH : 3,
+    // Wind
+    WIND_RANGE : 2
 }

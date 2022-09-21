@@ -3,11 +3,18 @@
   \****************************************************************************************************/
 h1 {
     font-size: 70px;
-    font-weight: 600;
     background-image: linear-gradient(to left, #e48314, #094fd0);
     color: transparent;
     background-clip: text;
     -webkit-background-clip: text;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+}
+
+.h1 {
+    width: 33vw;
 }
 
 body {
@@ -23,7 +30,7 @@ body {
 }
 
 #game-option {
-    width: 40vw;
+    width: 70vw;
     display: flex;
     justify-content: space-around;
     /* border: 1px solid black; */
@@ -44,6 +51,7 @@ body {
 
 .play-game:hover {
     background-color: aqua;
+    transform: scale(1.04);
 }
 
 canvas {
@@ -52,19 +60,34 @@ canvas {
 
 
 #links {
-    width: 40vw;
+
+    /* width: 30vw; */
     display: flex;
-    justify-content: space-around;
+    justify-content:flex-end;
     /* border: 1px solid black; */
     padding-top: 5px;
     padding-bottom: 5px;
+    margin-right: 100px;
     /* margin: 0px 15vw 0px 50px; */
 
 }
 
-.medias {
-    border-radius: 100%;
-    background-color: initial;
+.link:hover {
+    transform: scale(1.04);
+}
+
+#github {
+    width: 48px;
+    height: 48px;
+    margin: 10px;
+    padding-left: 2px;
+}
+
+#linkedin {
+    width: 48px;
+    height: 48px;
+    margin: 10px;
+    padding-left: 2px;
 }
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!

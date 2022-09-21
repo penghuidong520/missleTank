@@ -11,6 +11,11 @@ export default class GameView {
         this.game = new Game(ctx);
         this.game.start();
         this.game.animate();
+
+        this.ctx.fillStyle = 'black';
+        this.ctx.font = '50px serif';
+        this.ctx.textAlign = 'center';
+        this.ctx.fillText(`Press Start Button to Play`, CONSTANTS.DIM_X / 2, CONSTANTS.DIM_Y / 2, 500);
     }
 
     gameover() {
@@ -27,6 +32,7 @@ export default class GameView {
             requestAnimationFrame(this.gamePlay.bind(this));
         } else {
             if (!this.terminate) {
+                this.terminate = true;
                 this.displayWinner();
             }
         }
@@ -37,6 +43,7 @@ export default class GameView {
         this.ctx.font = '50px serif';
         this.ctx.textAlign = 'center';
         this.ctx.fillText(`Winner is ${this.game.winner.color}`, CONSTANTS.DIM_X / 2, CONSTANTS.DIM_Y / 2, 500);
+        this.ctx.fillText(`Click Restart to Play Again`, CONSTANTS.DIM_X / 2, CONSTANTS.DIM_Y / 2 + 100, 500);
     }
 
 }

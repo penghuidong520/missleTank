@@ -12,7 +12,6 @@ export default class Tank {
         this.height = CONSTANTS.TANK_SIZE
 
         this.health = CONSTANTS.MAX_HEALTH;
-
         document.addEventListener("keydown", this.keyDown);
         document.addEventListener("keyup", this.keyUp);
 
