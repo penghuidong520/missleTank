@@ -8,7 +8,7 @@ const CONSTANTS = require('./constants');
 export default class Game {
     constructor (ctx) {
         this.ctx = ctx;
-        this.direction = 'left'
+        // this.direction = 'left'
         this.wind = 0;
         this.shotsFired = false;
         this.start();
@@ -23,8 +23,8 @@ export default class Game {
         // ForceBar
         this.forceBar = new ForceBar();
         // Tanks
-        this.tank = new Tank(pos, 'red');
-        this.tank2 = new Tank([CONSTANTS.DIM_X-pos[0], pos[1]], 'blue');
+        this.tank = new Tank(pos, 'red', 'right');
+        this.tank2 = new Tank([CONSTANTS.DIM_X-pos[0], pos[1]], 'blue', 'left');
         this.currentTank = this.tank2;
         // GameOver ?
         this.gameOver = false;  
@@ -67,7 +67,7 @@ export default class Game {
     fire() {
         this.shotsFired = true;
         if (this.shoot) {
-            this.missle.drawMissle(this.ctx, this.direction, this.wind);
+            this.missle.drawMissle(this.ctx, this.currentTank.direction, this.wind);
             // this.switchTurn();
         }
         if (this.missleCollision()) {
@@ -83,11 +83,11 @@ export default class Game {
                 return true;
             }
         // if (this.missle.collision(this.platform)) return true;
-        if (this.missle.collision(this.tank)) {
+        if (this.missle.collision(this.tank, this.ctx)) {
             this.tank.health -= 1;
             return true;
         } 
-        if (this.missle.collision(this.tank2)) {
+        if (this.missle.collision(this.tank2, this.ctx)) {
             this.tank2.health -= 1;
             return true;
         }
@@ -133,16 +133,16 @@ export default class Game {
         if (!this.shotsFired) {
             switch (e.key) {
                 case 'a':
-                    this.direction = 'left';
+                    this.currentTank.direction = 'left';
                     break;
                 case 'd':
-                    this.direction = 'right';
+                    this.currentTank.direction = 'right';
                     break;
                 case 'ArrowLeft':
-                    this.direction = 'left';
+                    this.currentTank.direction = 'left';
                     break;
                 case 'ArrowRight':
-                    this.direction = 'right';
+                    this.currentTank.direction = 'right';
                     break;
             }
         }

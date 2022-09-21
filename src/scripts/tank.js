@@ -3,13 +3,14 @@ import MoveObject from './moveObject.js';
 const CONSTANTS = require('./constants');
 
 export default class Tank {
-    constructor(pos, color) {
+    constructor(pos, color, direction) {
         this.pos = pos;
         this.vel = CONSTANTS.TANK_SPEED;
-        this.color = color
+        this.color = color;
+        this.direction = direction;
 
-        this.width = CONSTANTS.TANK_SIZE
-        this.height = CONSTANTS.TANK_SIZE
+        this.width = CONSTANTS.TANK_SIZE;
+        this.height = CONSTANTS.TANK_SIZE;
 
         this.health = CONSTANTS.MAX_HEALTH;
         document.addEventListener("keydown", this.keyDown);

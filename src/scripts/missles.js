@@ -29,7 +29,7 @@ export default class Missle{
         ctx.fillRect(this.pos[0], this.pos[1], this.width, this.height);
     } 
 
-    collision(obj) {
+    collision(obj, ctx) {
         if (
             (this.pos[0] > obj.pos[0] &&
             this.pos[0] < obj.pos[0] + obj.width) && 
@@ -37,6 +37,9 @@ export default class Missle{
             this.pos[1] > obj.pos[1] - obj.height)
             ) 
         {
+            // missle hit animation here
+            this.hitAnimation(ctx);
+            //
             return true;
         }
             return false;
@@ -44,6 +47,10 @@ export default class Missle{
 
     fire() {
         this.pos[1] -= this.force;
+    }
+
+    hitAnimation(ctx) {
+
     }
 
 }
