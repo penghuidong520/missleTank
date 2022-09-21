@@ -1,6 +1,5 @@
 // const Tank = require('./scripts/tank');
 import GameView from './scripts/gameView'
-import Game from './scripts/game'
 const CONSTANTS = require('./scripts/constants');
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -8,16 +7,13 @@ document.addEventListener("DOMContentLoaded", () => {
     canvasEl.width = CONSTANTS.DIM_X;
     canvasEl.height = CONSTANTS.DIM_Y;
     canvasEl = canvasEl.getContext('2d');
-
     
-    const start = document.getElementsByClassName('play-game');
+    const start = document.getElementById('restart');
     let gv = new GameView(canvasEl)
-    start[0].addEventListener("click", ()=>{
-        gv = new GameView(canvasEl);
-        gv.gamePlay();
-    })
-    start[1].addEventListener("click", ()=>{
-        gv = new GameView(canvasEl);
+    gv.gamePlay();
+    start.addEventListener("click", ()=>{
+        gv.terminate = true;
+        gv = new GameView(canvasEl)
         gv.gamePlay();
     })
 })

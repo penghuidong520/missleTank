@@ -1,6 +1,15 @@
 /*!****************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/views.css ***!
   \****************************************************************************************************/
+h1 {
+    font-size: 70px;
+    font-weight: 600;
+    background-image: linear-gradient(to left, #e48314, #094fd0);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
 body {
     text-align: center;
     background: rgb(36,0,0);

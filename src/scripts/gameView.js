@@ -4,6 +4,7 @@ export default class GameView {
     constructor (ctx) {
         this.ctx = ctx;
         this.restart(ctx);
+        this.terminate = false;
     }
 
     restart(ctx) {
@@ -21,11 +22,13 @@ export default class GameView {
     }
 
     gamePlay() {
-        if (!this.gameover()) {
+        if (!this.gameover() && !this.terminate) {
             this.game.animate();
             requestAnimationFrame(this.gamePlay.bind(this));
         } else {
-            this.displayWinner();
+            if (!this.terminate) {
+                this.displayWinner();
+            }
         }
     }
 
