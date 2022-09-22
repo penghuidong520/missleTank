@@ -31,7 +31,7 @@
 
 - Thursday: Refactor what is left off and if everything basic is finished will then think about remodel my tank, map, and background -->
 
-- [CnoonBall][1]
+# [CnoonBall][1]
 
 # Background
 - CnoonBall is a game where two players take turns to shoot projectiles on each other, based on how much force is applied by pressing space, the projectile would shoot further.
