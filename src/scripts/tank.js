@@ -8,7 +8,6 @@ export default class Tank {
         this.vel = CONSTANTS.TANK_SPEED;
         this.color = color;
         this.direction = direction;
-        this.img = new Image();
 
         this.width = CONSTANTS.TANK_SIZE;
         this.height = CONSTANTS.TANK_SIZE;
@@ -31,8 +30,9 @@ export default class Tank {
         }
         ctx.fillStyle = this.color;
         const size = CONSTANTS.TANK_SIZE;
-        this.img.src = `images/${this.color}-cannon-${this.direction}.png`;
+        this.img = new Image();
 
+        this.img.src = `images/${this.color}-cannon-${this.direction}.png`;
         // ctx.fillRect(this.pos[0], this.pos[1], size, -size);
         ctx.drawImage(this.img, this.pos[0], this.pos[1] - size, size, size);
     }

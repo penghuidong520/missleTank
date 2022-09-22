@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         canvasEl.fillText(`A or LeftArrow key to move left, D or RightArrow key to move right. `, CONSTANTS.DIM_X / 2, CONSTANTS.DIM_Y / 3, 1000);
         canvasEl.fillText(`Hold space to charge attack to hit further`, CONSTANTS.DIM_X / 2, CONSTANTS.DIM_Y / 3 + 40, 1000);
         canvasEl.fillText(`Click start or restart to play the game`, CONSTANTS.DIM_X / 2, CONSTANTS.DIM_Y / 3 + 80, 1000);
-        canvasEl.fillText(`Adjust movement each time to shoot at desired direction`, CONSTANTS.DIM_X / 2, CONSTANTS.DIM_Y / 3 + 120, 1000);
+        canvasEl.fillText(`Number in the middle indicates wind force`, CONSTANTS.DIM_X / 2, CONSTANTS.DIM_Y / 3 + 120, 1000);
     })
     
 
