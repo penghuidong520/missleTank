@@ -1,4 +1,8 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto+Condensed:ital@1&display=swap');
+
 h1 {
+    font-family: 'Pacifico', cursive;
     font-size: 70px;
     background-image: linear-gradient(to left, #e48314, #094fd0);
     color: transparent;
