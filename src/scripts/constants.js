@@ -6,7 +6,7 @@ module.exports = CONSTANTS = {
     //tank movement speed
     TANK_SPEED : 3,
     TANK_COLOR : 'violet',
-    TANK_SIZE : 30,
+    TANK_SIZE : 50,
     //ForceBar
     FORCE_BAR_HEIGHT : 50,
     MAX_FORCE : 90,

@@ -15,8 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
     
     let gv = new GameView(canvasEl)
     
+    //Instruction
     instruction.addEventListener('click', ()=>{
-        // alert('do some');
         gv.terminate = true;
         gv.game.animate();
         canvasEl.fillStyle = 'black';
@@ -40,8 +40,4 @@ document.addEventListener("DOMContentLoaded", () => {
         gv = new GameView(canvasEl);
         gv.gamePlay();
     })
-    
-    // press anykey to restart
-    
-
 })

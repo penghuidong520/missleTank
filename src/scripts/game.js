@@ -23,12 +23,11 @@ export default class Game {
         // ForceBar
         this.forceBar = new ForceBar();
         // Tanks
-        this.tank = new Tank(pos, 'red', 'right');
-        this.tank2 = new Tank([CONSTANTS.DIM_X-pos[0], pos[1]], 'blue', 'left');
-        this.currentTank = this.tank2;
+        this.tank = new Tank(pos, 'black', 'right');
+        this.tank2 = new Tank([CONSTANTS.DIM_X-pos[0], pos[1]], 'white', 'left');
+        this.currentTank = this.tank;
         // GameOver ?
         this.gameOver = false;  
-
         document.addEventListener("keydown", this.keyDown.bind(this));
         document.addEventListener("keyup", this.keyUp.bind(this));
     }
@@ -111,14 +110,15 @@ export default class Game {
     }
 
     currentMark() {
+        const size = CONSTANTS.TANK_SIZE;
         this.ctx.beginPath();
-        this.ctx.moveTo(this.currentTank.pos[0] + 10, this.currentTank.pos[1] - 55);
-        this.ctx.lineTo(this.currentTank.pos[0] + 20, this.currentTank.pos[1] - 55);
-        this.ctx.lineTo(this.currentTank.pos[0] + 15, this.currentTank.pos[1] - 50);
+        this.ctx.moveTo(this.currentTank.pos[0] + size/3, this.currentTank.pos[1] - size - size/2);
+        this.ctx.lineTo(this.currentTank.pos[0] + size - size/3, this.currentTank.pos[1] - size - size/2);
+        this.ctx.lineTo(this.currentTank.pos[0] + size/2, this.currentTank.pos[1] - size - size/3);
         this.ctx.closePath();
 
         // the outline
-        this.ctx.lineWidth = 10;
+        this.ctx.lineWidth = 5;
         this.ctx.strokeStyle = '#666666';
         this.ctx.stroke();
 
