@@ -42,7 +42,7 @@ export default class GameView {
         this.ctx.fillStyle = 'black';
         this.ctx.font = '50px serif';
         this.ctx.textAlign = 'center';
-        this.ctx.fillText(`Winner is ${this.game.winner.color}`, CONSTANTS.DIM_X / 2, CONSTANTS.DIM_Y / 2, 500);
+        this.ctx.fillText(`Winner is ${this.game.winner.color} Cannon`, CONSTANTS.DIM_X / 2, CONSTANTS.DIM_Y / 2, 500);
         this.ctx.fillText(`Click Restart to Play Again`, CONSTANTS.DIM_X / 2, CONSTANTS.DIM_Y / 2 + 100, 500);
     }
 
