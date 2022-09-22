@@ -40,7 +40,7 @@
 
 - There's a wind factor in the middle of the screen, + number of wind will make projectile to travel further and faster to right of screen, - number of wind would do the opposite.
 
-- ![CnoonBall Gameplay]('cnoonball_gameplay.gif')
+![CnoonBall Gameplay](images/cnoonball_gameplay.gif)
 
 # Implementation
 
