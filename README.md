@@ -40,6 +40,8 @@
 
 - There's a wind factor in the middle of the screen, + number of wind will make projectile to travel further and faster to right of screen, - number of wind would do the opposite.
 
+- ![ezgif com-gif-maker]('images/cnoonball_gameplay.gif')
+
 # Implementation
 
 - Has a game class to initialize everything on the canvas and animate/move each object in one main game class
