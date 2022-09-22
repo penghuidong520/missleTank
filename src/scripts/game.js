@@ -31,8 +31,6 @@ export default class Game {
 
         document.addEventListener("keydown", this.keyDown.bind(this));
         document.addEventListener("keyup", this.keyUp.bind(this));
-        // this.animate()
-        // setInterval(this.animate.bind(this), 1000/60);
     }
 
     animate() {
