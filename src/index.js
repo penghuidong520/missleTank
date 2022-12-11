@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     //Instruction
     instruction.addEventListener('click', ()=>{
+        instruction.blur();
         gv.terminate = true;
         gv.game.animate();
         canvasEl.fillStyle = 'black';
@@ -30,12 +31,15 @@ document.addEventListener("DOMContentLoaded", () => {
     
 
     start.addEventListener("click", ()=> {
+        start.blur();
         gv.terminate = true;
         gv = new GameView(canvasEl);
+        
         gv.gamePlay();
     })
 
     restart.addEventListener("click", ()=>{
+        restart.blur();
         gv.terminate = true;
         gv = new GameView(canvasEl);
         gv.gamePlay();
